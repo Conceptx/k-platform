@@ -1,7 +1,7 @@
 from flask import Flask, render_template, url_for, request, redirect, session
 from bcrypt import hashpw
 from secure import *
-from datetime import *
+from datetime import datetime, date
 from os import urandom
 from functools import wraps
 import pymongo
