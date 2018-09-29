@@ -45,7 +45,7 @@
 </head>
 
 <body class="grey lighten-4">
-    <nav class="blue darken-2 sec">
+    <nav class="purple lighten-2 sec">
         <div class="container">
             <div class="nav-wrapper">
                 <a href="{{url_for('dashboard')}}" class="brand-logo">K-dashboard</a>
@@ -72,7 +72,7 @@
                                 <img src="../static/img/ocean.jpg">
                             </div>
                             <a href="#">
-                                <span class="circle blue center-align black-text fa-2x"><b></b></span>
+                                <span class="circle purple center-align black-text fa-2x"><b></b></span>
                             </a>
                             <a href="#" class="name black-text">{{credentials[0]}}</a>
                             <a href="#" class="email black-text">{{credentials[1]}}</a>
@@ -105,10 +105,10 @@
     <section class="section section-stats center sec">
         <div class="row">
             <div class="col s12 m6 l3">
-                <div class="card-panel blue lighten-1 white-text center">
+                <div class="card-panel blue accent-3 white-text center">
                     <i class="material-icons medium">insert_emoticon</i>
-                    <h5>Monthly Visitors</h5>
-                    <h3 class="count">28300</h3>
+                    <h5>Visitors</h5>
+                    <h3 class="count">{{visits}}</h3>
                     <div class="progress grey lighten-1">
                         <div class="determinate white" style="width:40%"></div>
                     </div>
@@ -117,15 +117,15 @@
             <div class="col s12 m6 l3">
                 <div class="card-panel center">
                     <i class="material-icons center medium">mode_edit</i>
-                    <h5>Posts</h5>
-                    <h3 class="count">105</h3>
+                    <h5>Clicks</h5>
+                    <h3 class="count">{{clicks}}</h3>
                     <div class="progress grey lighten-1">
                         <div class="determinate blue lighten-1" style="width:20%"></div>
                     </div>
                 </div>
             </div>
             <div class="col s12 m6 l3">
-                <div class="card-panel blue lighten-1 white-text center">
+                <div class="card-panel blue accent-3 white-text center">
                     <i class="material-icons medium">mode_comment</i>
                     <h5>Comments</h5>
                     <h3 class="count">1500</h3>
@@ -138,7 +138,7 @@
                 <div class="card-panel center">
                     <i class="material-icons center medium">supervisor_account</i>
                     <h5>Users</h5>
-                    <h3 class="count">455</h3>
+                    <h3 class="count">{{count}}</h3>
                     <div class="progress grey lighten-1">
                         <div class="determinate blue lighten-1" style="width:10%"></div>
                     </div>
@@ -148,11 +148,14 @@
     </section>
 
     <!-- Section : Charts + Visitors -->
-    <section class="section section-visitors blue lighten-4 sec">
+    <section class="section section-visitors purple lighten-2 sec">
         <div class="row">
             <div class="col s12 m6 l8">
                 <div class="card-panel">
-                    <div id="keen-example-chart" style="height:fit-content; width:100%"></div>
+                    <div id="keen-logins-chart" style="height:fit-content; width:100%"></div>
+                </div>
+                <div class="card-panel">
+                    <div id="keen-clicks-chart" style="height:fit-content; width:100%"></div>
                 </div>
             </div>
             <div class="col s12 m6 l4">
@@ -256,7 +259,7 @@
     </section>
 
     <!-- Section : Footer -->
-    <footer class="section blue darken-2 black-text center sec">
+    <footer class="section black purple-text  text-lighten-2 center sec">
         <p class="flow-text">kudziya &copy; 2018</p>
         <p>Designed by Theophilus Okoye</p>
 
@@ -265,17 +268,17 @@
 
     <!-- Section : FABS -->
     <div class="fixed-action-btn sec">
-        <a class="btn-floating btn-large red">
+        <a class="btn-floating btn-large blue">
             <i class="material-icons">add</i>
         </a>
         <ul>
-            <li><a href="#postmodal" class="modal-trigger btn-floating blue">
+            <li><a href="#postmodal" class="modal-trigger btn-floating purple">
                     <i class="material-icons">mode_edit</i>
                 </a></li>
-            <li><a href="#categorymodal" class="modal-trigger btn-floating blue">
+            <li><a href="#categorymodal" class="modal-trigger btn-floating purple">
                     <i class="material-icons">folder</i>
                 </a></li>
-            <li><a href="#usermodal" class="modal-trigger btn-floating blue">
+            <li><a href="#usermodal" class="modal-trigger btn-floating purple">
                     <i class="material-icons">supervisor_account</i>
                 </a></li>
         </ul>
@@ -405,7 +408,7 @@
         });
 
         var chart = new Keen.Dataviz()
-            .el("#keen-example-chart")
+            .el("#keen-logins-chart")
             .height(240)
             .title("Logins")
             .type("linechart")
@@ -416,8 +419,36 @@
                 event_collection: "signins",
                 group_by: ["username"],
                 interval: "daily",
-                timeframe: "this_3_days",
+                timeframe: "this_5_days",
                 timezone: "Africa/Nairobi"
+            })
+            .then(function (res) {
+                chart.data(res).render();
+            })
+            .catch(function (err) {
+                chart.message(err.message);
+            });
+    </script>
+
+    <script type="text/javascript">
+        var client = new Keen({
+            projectId: "5badffe1c9e77c00012d481a",
+            readKey: "57BCB18275F5406D1ED3D85E88EF8FC5437B6C93D8725F7C3BDD1CB7EBA1A2776B0B84DC40F1D673D5A95462A8D35FD0BC736F192AA1AEF415A8035BD09B3A26AD6794FED943AC3DD0D2D6B228D4F0313FC8E93902DFA7A5CA5F8EC472FDC843"
+        });
+
+        var client = new Keen.Dataviz()
+            .el("#keen-clicks-chart")
+            .height(240)
+            .title("Clicks")
+            .type("piechart")
+            .prepare();
+
+        pie
+            .query("count", {
+                event_collection: "clicks",
+                group_by: ["element.class"],
+                timeframe: "this_5_days",
+                timezone: "Asia/Istanbul"
             })
             .then(function (res) {
                 chart.data(res).render();
