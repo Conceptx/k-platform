@@ -31,6 +31,9 @@ try:
 
 
     @app.route('/' ,methods=('GET', 'POST'))
+    def landing():
+        return render_template('landing.html')
+
     @app.route('/kudziya/home',methods=('GET', 'POST'))
     @login_required
     def kudziya():

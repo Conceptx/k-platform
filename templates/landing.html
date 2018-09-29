@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %} Kudziya Signup {% endblock %}</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../static/css/materialize.css">
+    <link rel="stylesheet" href="../static/css/fontawesome.css">
+    <link rel="stylesheet" href="../static/css/iconfont/material-icons.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+
+
+    <!-- Analytics Script -->
+    <script src="../static/js/analytic.js"></script>
+
+</head>
+
+<body>
+    <div class="container ">
+        <div class="row">
+            <div class="slider fullscreen">
+                <ul class="slides">
+                    <li>
+                        <img src="../static/img/cosmetics-2.jpeg">
+                        <div class="caption right-align">
+                            <h3 class="pink-text text-accent-4"><b>Breakthrough cosmetics on </b><span class="black-text text-lighten-3"><b>Kudziya</b></span></h3>
+                            <div class="container right">
+                                <a href="{{url_for('signup')}}" class="btn btn-large btn-flat pink">
+                                    <strong>Explore Kudziya</strong>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="../static/img/electronics.jpeg">
+                        <div class="caption right-align">
+                            <h3>Trending gadgets on <span class="blue-text text-lighten-3">Kudziya</span></h3>
+                            <div class="container right">
+                                <a href="{{url_for('signup')}}" class="btn btn-large btn-flat blue">
+                                    <strong>Explore Kudziya</strong>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="../static/img/sneakers.jpeg">
+                        <div class="caption right-align">
+                            <h3>Trending footwear on <span class="blue-text text-lighten-3">Kudziya</span></h3>
+                            <div class="container right">
+                                <a href="{{url_for('signup')}}" class="btn btn-large btn-flat blue">
+                                    <strong>Explore Kudziya</strong>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="../static/img/clothing-1.jpeg">
+                        <div class="caption right-align">
+                            <h3 class="black-text">Bold fashion statements on <span class="blue-text text-lighten-3">Kudziya</span></h3>
+                            <div class="container right">
+                                <a href="{{url_for('signup')}}" class="btn btn-large btn-flat blue">
+                                    <strong>Explore Kudziya</strong>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="../static/img/clothing-2.jpeg">
+                        <div class="caption right-align">
+                            <h3 class="black-text">Cutest baby outfits on <span class="yellow-text text-darken-4">Kudziya</span></h3>
+                            <div class="container right">
+                                <a href="{{url_for('signup')}}" class="btn btn-large btn-flat yellow accent-3">
+                                    <strong>Explore Kudziya</strong>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../static/js/jquery-2.1.1.js"></script>
+    <script src="../static/js/materialize.js"></script>
+    <script>
+        //Init All Elements
+        M.AutoInit();
+    </script>
+    <script>
+        $(document).ready(function () {
+            //Init Slider
+            $('.slider').slider({
+                indicators: true
+            });
+        });
+    </script>
+</body>
+
+</html>
