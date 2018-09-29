@@ -41,6 +41,10 @@
             margin-left: auto;
             margin-right: auto;
         }
+
+        .new{
+            border: 1px solid black;
+        }
     </style>
 </head>
 
@@ -161,7 +165,12 @@
                         <h5>Categories</h5>
                     </li>
                     {% for i, j in zip(recents,percategory) %}
-                    <li class="collection-item">{{i}} <span class="badge purple-text text-lighten-2 new blue fa-1x">{{j}}</span></li>
+                    {% if j!=0 %}
+                    <li class="collection-item">{{i}} <span class="badge blue-text white new fa-1x strong">{{j}}</span></li>
+                    {% else %}
+                    <li class="collection-item">{{i}} <span class="badge black-text white fa-1x strong">{{j}}</span></li>
+                    {% endif %}
+
                     {% endfor %}
                 </ul>
             </div>
