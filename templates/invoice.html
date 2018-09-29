@@ -1,0 +1,130 @@
+{% extends "index.html" %}
+{% block content %}
+<!-- Section : Table -->
+<section class="section section-invoice">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m6 l6 left-align flow-text">
+                <img src="../static/img/k-based-2.png" width=250px height=200px class="responsive-img">
+                <p>To,
+                    <br />
+                    <span class="strong">Theophilus Okoye</span>
+                    <br />
+                    <span>Flat 1 53 Mag. Way</span>
+                    <br />
+                    <span>Chinhoyi, Zimbabwe</span>
+                    <br />
+                    <span>+263-78-362-0957</span>
+                </p>
+            </div>
+            <div class="col s12 m6 l6 flow-text">
+                <div class="right-align">
+                    <p><span class="strong">Kudziya LLC</span>
+                        <br />
+                        <span>CBD</span>
+                        <br />
+                        <span>Harare, Zimbabwe</span>
+                        <br />
+                        <span>+263-78-632-0957</span>
+                    </p>
+                </div>
+
+                <div class="right-align">
+                    <p>
+                        <a href="https://kudziya.herokuapp.com">
+                            <span class="strong">kudziya.com</span>
+                        </a>
+                        <br />
+                        <a href="https://btzw.herokuapp.com"><span>btzw.com</span></a>
+                        <br />
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m3 l3 cyan">
+                <h4>Invoice</h4>
+            </div>
+            <div class="col s12 m9 l9 cyan">
+                <div class="row">
+                    <div class="col s12 m4 l4">
+                        <p class="strong">Total Due</p>
+                        <h4>$ 83.25</h4>
+                    </div>
+                    <div class="col s12 m4 l4">
+                        <p class="strong">Invoice No.</p>
+                        <h4>IN21116</h4>
+                    </div>
+                    <div class="col s12 m4 l4">
+                        <p class="strong">Purchase Date</p>
+                        <h4>28.9.2018</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <table class="striped">
+                    <thead>
+                        <tr>
+                            <th data-field="no">No</th>
+                            <th data-field="item">Item</th>
+                            <th data-field="uprice">Unit Price</th>
+                            <th data-field="price">Unit</th>
+                            <th data-field="price">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1.</td>
+                            <td>Pantene Kit</td>
+                            <td>$ 25.00</td>
+                            <td>3</td>
+                            <td>$ 75.00</td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="3"></td>
+                            <td>Sub Total:</td>
+                            <td>$ 75.00</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"></td>
+                            <td>Service Tax</td>
+                            <td>11.00%</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3"></td>
+                            <td class="cyan white-text">Grand Total</td>
+                            <td class="cyan strong white-text">$ 83.25</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row fa-1x">
+            <div class="col s12 m6 l6">
+                <p class="strong">Payment Method</p><br>
+                <p>Please make the cheque to: <br> THEOPHILUS OKOYE</p>
+                <p class="strong">Terms & Conditions Apply</p>
+
+            </div>
+            <div class="col s12 m6 l6 center-align">
+                <p>Approved By</p>
+                <img src="../static/img/signature.png" alt="signature">
+                <p class="header">THEOPHILUS OKOYE</p>
+                <p>Operations Director</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

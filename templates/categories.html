@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kudziya - Categories</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../static/css/iconfont/material-icons.css">
+    <link rel="stylesheet" href="../static/css/fontawesome.css">
+    <link rel="stylesheet" href="../static/css/materialize.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <style>
+        .primary-overlay {
+            background: rgba(255, 255, 255, 0.45);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .main-header {
+            background: url(../static/img/background5.jpg);
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            min-height: 600px;
+            color: #000;
+            position: relative;
+        }
+
+        .loader {
+            position: absolute;
+            margin-top: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+
+<body class="grey lighten-4">
+    <nav class="blue darken-2 sec">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="{{url_for('dashboard')}}" class="brand-logo">K-dashboard</a>
+                <a class="sidenav-trigger show-on-large right" data-target="side-nav">
+                    <i class="material-icons">menu</i>
+                </a>
+
+                <ul class="right hide-on-med-and-down">
+                    <li>
+                        <a href="{{url_for('dashboard')}}">k-dashboard
+                        </a>
+                    </li>
+                    <li><a href="{{url_for('posts')}}">Posts</a></li>
+                    <li class="active"><a href="{{url_for('category')}}"">Categories</a></li>
+                    <li><a href="
+                            #">Comments</a></li>
+                    <li><a href="
+                            {{url_for('users')}}">Users</a></li>
+                </ul>
+
+                <!-- Sidenav -->
+                <ul id="
+                            side-nav" class="sidenav">
+                    <li>
+                        <div class="user-view">
+                            <div class="background">
+                                <img src="../static/img/ocean.jpg">
+                            </div>
+                            <a href="#">
+                                <span class="circle blue center-align black-text fa-2x"><b></b></span>
+                            </a>
+                            <a href="#" class="name black-text">k-sales team</a>
+                            <a href="#" class="email black-text">btzw@gaggle.email</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="{{url_for('dashboard')}}"><i class="material-icons">dashboard</i> k-dashboard
+                        </a>
+                    </li>
+                    <li><a href="{{url_for('posts')}}">Posts</a></li>
+                    <li><a href="{{url_for('category')}}"">Categories</a></li>
+                    <li><a href=" #">Comments</a></li>
+                    <li><a href="
+                            {{url_for('users')}}">Users</a></li>
+                    <li><a>
+                            <div class="
+                            divider">
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="subheader">Account Controls</a>
+                    </li>
+                    <li>
+                        <a href="{{url_for('logout')}}" class="wave-effect">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section : Category -->
+    <section class="section section-category grey lighten-4 sec">
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">Category</span>
+                            <table class="striped">
+                                <thead>
+                                    <tr>
+                                        <th>Category</th>
+                                        <th>Date Created</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i in categories %}
+                                    <tr>
+                                        <td>{{i[0]}}</td>
+                                        <td type="Date">{{i[1]}}</td>
+                                        <td><a href="#" class="btn blue lighten-2">Details</a></td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card-action">
+                            <ul class="pagination center">
+                                <li>
+                                    <a href="#">
+                                        <i class="material-icons large blue-text">chevron_left</i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="material-icons large blue-text">chevron_right</i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section : Footer -->
+    <footer class="section blue darken-2 black-text center sec">
+        <p class="flow-text">kudziya &copy; 2018</p>
+        <p>Designed by Theophilus Okoye</p>
+    </footer>
+
+
+    <!-- Section : FABS -->
+    <div class="fixed-action-btn sec">
+        <a class="btn-floating btn-large red">
+            <i class="material-icons">add</i>
+        </a>
+        <ul>
+            <li><a href="#categorymodal" class="modal-trigger btn-floating blue">
+                    <i class="material-icons">folder</i>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Modals -->
+    <div id="categorymodal" class="modal">
+        <div class="modal-content">
+            <h4>Add Category</h4>
+            <form action="{{url_for('addCategory')}}" method="POST">
+                <div class="input-field">
+                    <input type="text" name="category" id="category">
+                    <label for="category">Title</label>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="modal-action modal-close btn blue white-text">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Section : Preloader -->
+    <header class="main-header preloader">
+        <div class="primary-overlay">
+            <div class="container">
+                <div class="row">
+                    <h3 class="purple-text text-lighten-2">kudziya | <span class="blue-text text-lighten-2">buy & sell
+                            platform</span></h3>
+                </div>
+            </div>
+            <div class="container center">
+                <div class="row">
+                    <div class="col s10 m9 l9 offset-m1 offset-l1 ">
+                        <div class="preloader-wrapper purple active big z-depth-5 loader">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Scripts -->
+    <script src="../static/js/jquery-2.1.1.js"></script>
+    <script src="../static/js/materialize.js"></script>
+    <script src="../static/js/dashboard.js"></script>
+
+
+</body>
+
+</html>

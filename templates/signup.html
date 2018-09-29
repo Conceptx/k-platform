@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kudziya Signup</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../static/css/materialize.css">
+    <link rel="stylesheet" href="../static/css/fontawesome.css">
+    <link rel="stylesheet" href="../static/css/iconfont/material-icons.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <style>
+        .container .row{
+        margin-top:50px;
+        margin-bottom:50px;
+    }
+    
+.primary-overlay {
+  background: rgba(63, 57, 77, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.main-header {
+  background: url(../static/img/background4.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  min-height: 600px;
+  color: #000;
+  position: relative;
+}
+
+    </style>
+
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="primary-overlay">
+            <div class="container">
+                <div class="row center">
+                    <div class="col s12 m8 l4"></div>
+                    <div class="col s12 m8 l4">
+                        <div class="row">
+                            <div class="col s12">
+                                <ul class="tabs transparent">
+                                    <li class="tab col s6"><a href="#signup" class="blue-text"><b>Sign Up</b></a></li>
+                                    <li class="tab col s6"><a href="#login" class="blue-text {{active}}"><b>Sign In</b></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="signup">
+                            <form action="{{url_for('signup')}}" method="post">
+                                <div class="col s12">
+                                    <div class="input-field">
+                                        <label for="username">Username</label>
+                                        <input type="text" name="username" placeholder="enter username" required>
+                                    </div>
+                                </div>
+                                <div class="col s12">
+                                    <div class="input-field">
+                                        <label for="email">Email</label>
+                                        <input type="email" name="email" placeholder="enter email" validate required>
+                                    </div>
+                                </div>
+                                <div class="col s12">
+                                    <div class="input-field">
+                                        <label for="password">Password</label>
+                                        <input type="password" name="password" placeholder="enter password" required>
+                                    </div>
+                                </div>
+                                <div class="col s12">
+                                    <div class="input-field">
+                                        <label for="cpassword">Confirm Password</label>
+                                        <input type="password" name="cpassword" placeholder="reenter password" required>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-medium btn-flat center blue" style="display:block;width:80%;margin:auto">
+                                    Create Account
+                                </button>
+                            </form>
+                        </div>
+                        <div id="login">
+                            <form action="{{url_for('login')}}" method="post">
+                                <div class="col s12">
+                                    <div class="input-field">
+                                        <label for="username">Username</label>
+                                        <input type="text" name="username" placeholder="enter username" required>
+                                    </div>
+                                </div>
+                                <div class="col s12">
+                                    <div class="input-field">
+                                        <label for="password">Password</label>
+                                        <input type="password" name="password" placeholder="enter password" required>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-medium btn-flat blue" style="display:block;width:80%;margin:auto">
+                                    Sign In
+                                </button>
+                            </form>
+                        </div>
+                        <div class="col s12 m8 l4"></div>
+                    </div>
+                </div>
+            </div>
+    </header>
+
+    <!-- Scripts -->
+    <script src="../static/js/typed.js"></script>
+    <script src="../static/js/Chart.js"></script>
+    <script src="../static/js/jquery-2.1.1.js"></script>
+    <script src="../static/js/materialize.js"></script>
+    <script>
+        //Init All Elements
+        M.AutoInit();
+    </script>
+</body>
+
+</html>

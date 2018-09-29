@@ -1,0 +1,39 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By Build Systems
+ */
+
+.icon-block {
+  padding: 0 15px;
+}
+
+.icon-block .material-icons {
+  font-size: inherit;
+}
+
+.section-products {
+  margin-top: 50px;
+}
+
+.section-preloader {
+  padding: 300px;
+}
+
+.card a {
+  padding-left: 10px;
+}
+
+.btn-price {
+  width: auto;
+  height: auto;
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 65px;
+  margin: 0 auto 0 auto;
+  position: absolute;
+  top: 0;
+  letter-spacing: 0
+}

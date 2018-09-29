@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!--Stylesheets-->
+  <link rel="stylesheet" href="../static/css/fontawesome.css">
+  <link rel="stylesheet" href="../static/css/materialize.css">
+  <link rel="stylesheet" href="../static/css/iconfont/material-icons.css">
+  <link rel="stylesheet" href="../static/css/style.css">
+
+  <script>
+    (function (name, path, ctx) {
+      var latest, prev = name !== 'Keen' && window.Keen ? window.Keen : false;
+      ctx[name] = ctx[name] || {
+        ready: function (fn) {
+          var h = document.getElementsByTagName('head')[0],
+            s = document.createElement('script'),
+            w = window,
+            loaded;
+          s.onload = s.onerror = s.onreadystatechange = function () {
+            if ((s.readyState && !(/^c|loade/.test(s.readyState))) || loaded) {
+              return
+            }
+            s.onload = s.onreadystatechange = null;
+            loaded = 1;
+            latest = w.Keen;
+            if (prev) {
+              w.Keen = prev
+            } else {
+              try {
+                delete w.Keen
+              } catch (e) {
+                w.Keen = void 0
+              }
+            }
+            ctx[name] = latest;
+            ctx[name].ready(fn)
+          };
+          s.async = 1;
+          s.src = path;
+          h.parentNode.insertBefore(s, h)
+        }
+      }
+    })('KeenAsync', 'https://d26b395fwzu5fz.cloudfront.net/keen-tracking-1.4.2.min.js', this);
+
+    KeenAsync.ready(function () {
+      var client = new KeenAsync({
+        projectId: '5badffe1c9e77c00012d481a',
+        writeKey: '941C08DE5528948614884DACD46A2769BF3DAA1F5DCC327E3C99768B5E75300A5936ECA1768585FAC60C5B9A0ECA4087606EA574A8FD02A1135D77FF322148B77686AA157CC63FDED21EC58E69A9394B5655105F9142C72541982C677FF89D6F'
+      });
+
+      client.initAutoTracking();
+    });
+  </script>
+
+  <style>
+    .btn-flat {
+      border: 1px solid greenyellow;
+    }
+
+    .primary-overlay {
+      background: rgba(255, 255, 255, 0.45);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .main-header {
+      background: url(../static/img/background5.jpg);
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      min-height: 600px;
+      color: #000;
+      position: relative;
+    }
+
+    .loader {
+      position: absolute;
+      margin-top: 300px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+
+  <title>Kudziya Platform</title>
+</head>
+
+<body>
+
+  <div class="navbar-fixed sec">
+    <nav class="transparent">
+      <div class="row">
+        <div class="nav-wrapper">
+          <div class="col s6 m6 l4 xl4">
+            <a href="#home" class="brand-logo left black-text"><strong>kudziya |</strong><small>buy & sell platform</small></a>
+          </div>
+          <div class="col s6 m6 l4 xl4">
+            <a class="sidenav-trigger right" data-target="mobile-nav">
+              <i class="material-icons black-text large">more_vert</i>
+            </a>
+            <a class="sidenav-trigger right" data-target="filters">
+              <i class="material-icons black-text large">search</i>
+            </a>
+          </div>
+          <div class="col s6 m4 l4 xl4">
+            <ul class="hide-on-med-and-down right">
+              <li>
+                <a href="{{url_for('login')}}" class="btn btn-flat">Sign In</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div class="row sec">
+    <div class="col s12 m12 l4">
+      <!-- Section : Sidenav -->
+      <section class="section section-sidenav">
+        <div class="sidenav sidenav-fixed transparent" id="mobile-nav">
+          <br>
+          <br>
+          <div class="user-view">
+            <img src="../static/img/avatar (2).jpg" class="circle responsive-img">
+            <span>
+              <b class="name blue-text text-lighten-2">{{username}}</b>
+            </span>
+          </div>
+          <div class="divider blue lighten-2"></div>
+          <!-- Section : Links -->
+          <section class="section section-links">
+            <ul class="collection left">
+              <li class="collection-item"><a href="{{url_for('kudziya')}}">Showroom <i class="material-icons">store</i></a></li>
+              <li class="collection-item"><a href="{{url_for('mailbox')}}">Mailbox <i class="material-icons">email</i></a></li>
+              <li class="collection-item"><a href="{{url_for('invoices')}}">Invoices <i class="material-icons">event_note</i></a></li>
+              <li class="collection-item"><a href="#">Settings <i class="material-icons">settings</i></a></li>
+              <li class="collection-item"><a href="{{url_for('logout')}}">Logout<i class="material-icons">lock_outline</i></a></li>
+            </ul>
+          </section>
+        </div>
+      </section>
+    </div>
+    <div class="col s12 m8 l8 offset-m2">
+
+      {% block content %}
+      <!-- Section : Platform -->
+      <section class="section section-products center sec">
+        <div class="container">
+          <div class="row">
+            {% for i in products %}
+            <div class="col s12 m12 l4">
+              <!-- Product Cards Go Here -->
+              <div class="card z-depth-4">
+                <div class="card-image">
+                  <a class="btn-floating btn-large btn-price pink white-text">${{i[4]}}</a>
+                  <img src="../static/img/light-colorful-Wallpaper-Wide-number-ykJ.jpg">
+                  <span class="card-title black-text">{{i[1]}}
+                  </span>
+                </div>
+                <div class="card-content">
+                  <p class="flow-text">{{i[2]}}</p>
+                </div>
+                <div class="card-action center">
+                  <a class="btn btn-large black waves-effect waves-black modal-trigger" href="#{{i[0]}}">Read More</a>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+      </section>
+
+      {% for i in products %}
+      <div class="modal" id="{{i[0]}}">
+        <div class="modal-content">
+          <ul class="collection with-header flow-text">
+            <li class="collection-header black-text">
+              <h4>Features</h4>
+            </li>
+            {% for x in i[3] %}
+            <li class="collection-item">{{x}}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <a href="https://www.paynow.co.zw/Payment/Link/?q=c2VhcmNoPXRoZW9waGlsdXNva295ZTYlNDBnbWFpbC5jb20mYW1vdW50PTAuMDAmcmVmZXJlbmNlPSZsPTA%3d"
+            class="btn btn-medium waves-effect waves-dark black" target="_blank">Buy</a>
+          <button class="modal-action modal-close btn btn-medium black waves-effect waves-dark">Close</button>
+        </div>
+
+      </div>
+      {% endfor %}
+
+      <ul class="sidenav center" id="filters" data-side="right">
+        <li>
+          <a class="btn btn-flat btn-filters">
+            Name
+          </a>
+        </li>
+        <li>
+          <a class="btn btn-flat btn-filters">
+            Price
+          </a>
+        </li>
+        <li>
+          <a class="btn btn-flat btn-filters">
+            Category
+          </a>
+        </li>
+        <li>
+          <a class="btn btn-flat btn-filters">
+            Features
+          </a>
+        </li>
+        <li>
+          <a href="#" class="btn btn-flat">Become a seller</a>
+        </li>
+        <li>
+          <a href="#" class="btn btn-flat">Sign In</a>
+        </li>
+      </ul>
+    </div>
+    {% endblock %}
+  </div>
+
+  <footer class="section section-footer transparent sec">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m12 l9 offset-l3 left">
+          <div class="divider"></div>
+          <div class="footer-copyright center">
+            <p class="flow-text">kudziya &copy; 2018</p>
+            <p>Designed by <span class="blue-text">Theophilus Okoye</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Section : Preloader -->
+  <header class="main-header preloader">
+    <div class="primary-overlay">
+      <div class="container">
+        <div class="row">
+          <h3 class="purple-text text-lighten-2">kudziya | <span class="blue-text text-lighten-2">buy & sell
+              platform</span></h3>
+        </div>
+      </div>
+      <div class="container center">
+        <div class="row">
+          <div class="col s10 m9 l9 offset-m1 offset-l1 ">
+            <div class="preloader-wrapper purple active big z-depth-5 loader">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <!--Scripts-->
+  <script src="../static/js/jquery-2.1.1.js"></script>
+  <script src="../static/js/materialize.js"></script>
+  <script src="../static/js/dashboard.js"></script>
+  <script>
+    M.AutoInit();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,250 @@
+{% extends "index.html" %}
+{% block content %}
+<link rel="stylesheet" href="../static/css/prism.css">
+<link rel="stylesheet" href="../static/css/style.min.css">
+<link rel="stylesheet" href="../static/css/custom.min.css">
+<section>
+
+    <!--start container-->
+    <div class="container highering ">
+
+        <div id="mail-app" class="section">
+            <div class="row">
+                <div class="col s12">
+                    <nav class="purple lighten-3">
+                        <div class="nav-wrapper">
+                            <div class="left col s12 m5 l5">
+                                <ul>
+                                    <li><a href="#!" class="email-menu"><i class="material-icons">menu</i></a>
+                                    </li>
+                                    <li><a href="#!" class="email-type">Primary</a>
+                                    </li>
+                                    <li class="right"><a href="#!"><i class="material-icons">search</i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col s12 m7 l7 hide-on-med-and-down">
+                                <ul class="right">
+                                    <li><a href="#!"><i class="material-icons">archive</i></a>
+                                    </li>
+                                    <li><a href="#!"><i class="material-icons">delete</i></a>
+                                    </li>
+                                    <li><a href="#!"><i class="material-icons">email</i></a>
+                                    </li>
+                                    <li><a href="#!"><i class="material-icons">more_horiz</i></a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </nav>
+                </div>
+                <div class="col s12">
+                    <div id="email-sidebar" class="col s2 m1 s1 card-panel">
+                        <ul>
+                            <li>
+                                <img src="../static/img/user-png-image-15189.png" alt="" class="circle responsive-img valign profile-image">
+                            </li>
+                            <li>
+                                <a href="#!"><i class="material-icons">archive</i></a>
+                            </li>
+                            <li>
+                                <a href="#!"><i class="material-icons">group</i></a>
+                            </li>
+                            <li>
+                                <a href="#!"><i class="material-icons">local_offer</i></a>
+                            </li>
+                            <li>
+                                <a href="#!"><i class="material-icons">report</i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="email-list" class="col s10 m4 l4 card-panel z-depth-5">
+                        <ul class="collection">
+                            <li class="collection-item avatar email-unread" style="margin-right:30px;">
+                                <i class="material-icons blue-text prefix">group</i>
+                                <span class="email-title">Social</span>
+                                <p class="truncate grey-text ultra-small">You have Google+ request from theo okoye.</p>
+                                <a href="#!" class="secondary-content"><span class="new badge blue">4</span></a>
+                            </li>
+                            <li class="collection-item avatar email-unread" style="margin-right:30px;">
+                                <i class="material-icons green-text">local_offer</i>
+                                <span class="email-title">Promotions</span>
+                                <p class="truncate grey-text ultra-small">Kudziya, Vans 50% off on summer sale.</p>
+                                <a href="#!" class="secondary-content"><span class="new badge green">6</span></a>
+                            </li>
+                            <li class="collection-item avatar email-unread">
+                                <span class="circle red lighten-1">A</span>
+                                <span class="email-title">Adidas</span>
+                                <p class="truncate grey-text ultra-small">Summer sale is now going on kudziya platform.</p>
+                                <a href="#!" class="secondary-content email-time"><span class="blue-text ultra-small">12:10
+                                        am</span></a>
+                            </li>
+                            <li class="collection-item avatar selected">
+                                <span class="circle blue">K</span>
+                                <span class="email-title">Kudzi Machiridza</span>
+                                <p class="truncate grey-text ultra-small">Hey Kudzi, be the first to check the latest
+                                    arrivals.</p>
+                                <a href="#!" class="secondary-content email-time"><i class="material-icons">attachment</i>
+                                    <span class="grey-text ultra-small">12:10 am</span></a>
+                            </li>
+
+                            <li class="collection-item avatar"></li>
+                            <li class="collection-item avatar"></li>
+                            <li class="collection-item avatar"></li>
+                            <li class="collection-item avatar"></li>
+
+                        </ul>
+                    </div>
+                    <div id="email-details" class="col s12 m7 l7 card-panel">
+                        <p class="email-subject truncate">Latest Arrivals On Kudziya <span class="email-tag grey lighten-3">Inbox</span>
+                            <span class="email-tag  light-blue lighten-4">Products</span> <i class="material-icons yellow-text text-darken-3 right">star</i>
+                        </p>
+                        <hr class="grey-text text-lighten-2">
+                        <div class="email-content-wrap">
+                            <div class="row">
+                                <div class="col s10 m10 l10">
+                                    <ul class="collection">
+                                        <li class="collection-item avatar">
+                                            <img src="../static/img/avatar (2).jpg" alt="" class="circle">
+                                            <span class="email-title">Theophilus Okoye</span>
+                                            <p class="truncate grey-text ultra-small">To me, Machiridza</p>
+                                            <p class="grey-text ultra-small">Yesterday</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col s2 m2 l2 email-actions">
+                                    <a href="#!"><span><i class="material-icons">reply</i></span></a>
+                                    <a href="#!"><span><i class="material-icons">more_vert</i></span></a>
+                                </div>
+                            </div>
+                            <div class="email-content">
+                                <p>Hi Kudzi,</p>
+                                <p>Be the first to check out our latest arrivals.</p>
+                                <p>Visit the Kudziya site or app to see the latest software and electronics gismos.</p>
+                                <p>Kind Regards
+                                    <br>Theo Okoye</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="email-content-wrap">
+                            <div class="row">
+                                <div class="col s10 m10 l10">
+                                    <ul class="collection">
+                                        <li class="collection-item avatar">
+                                            <img src="../static/img/avatar (2).jpg" alt="" class="circle">
+                                            <span class="email-title">Theophilus Okoye</span>
+                                            <p class="truncate grey-text ultra-small">To me, Machiridza</p>
+                                            <p class="grey-text ultra-small">Yesterday</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col s2 m2 l2 email-actions">
+                                    <a href="#!"><span><i class="material-icons">reply</i></span></a>
+                                    <a href="#!"><span><i class="material-icons">more_vert</i></span></a>
+                                </div>
+                            </div>
+                            <div class="email-content">
+                                <p>Hi Kudzi,</p>
+                                <p>Be the first to check out our latest arrivals.</p>
+                                <p>Visit the Kudziya site or app to see the latest software and electronics gismos.</p>
+                                <p>Kind Regards
+                                    <br>Theo Okoye</p>
+                            </div>
+                        </div>
+                        <div class="email-reply">
+                            <div class="row">
+                                <div class="col s4 m4 l4 center-align">
+                                    <a href="!#"><i class="material-icons">reply</i></a>
+                                    <p class="ultra-small">Reply</p>
+                                </div>
+                                <div class="col s4 m4 l4 center-align">
+                                    <a href="!#"><i class="material-icons">reply_all</i></a>
+                                    <p class="ultra-small">Reply all</p>
+                                </div>
+                                <div class="col s4 m4 l4 center-align">
+                                    <a href="!#"><i class="material-icons">forward</i></a>
+                                    <p class="ultra-small">Forward</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Compose Email Trigger -->
+            <div class="fixed-action-btn" style="bottom: 50px; right: 19px;">
+                <a class="btn-floating btn-large purple lighten-2 modal-trigger" href="#modal1">
+                    <i class="material-icons">border_color</i>
+                </a>
+            </div>
+
+
+
+            <!-- Compose Email Structure -->
+            <div id="modal1" class="modal">
+                <div class="modal-content">
+                    <nav class="purple lighten-1">
+                        <div class="nav-wrapper">
+                            <div class="left col s12 m5 l5">
+                                <ul>
+                                    <li><a href="#!" class="email-menu"><i class="material-icons"></i></a>
+                                    </li>
+                                    <li><a href="#!" class="email-type">Compose</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col s12 m7 l7 hide-on-med-and-down">
+                                <ul class="right">
+                                    <li><a href="#!"><i class="material-icons">attach_file</i></a>
+                                    </li>
+                                    <li><a href="#!"><i class="material-icons">send</i></a>
+                                    </li>
+                                    <li><a href="#!"><i class="material-icons">more_vert</i></a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </nav>
+                </div>
+                <div class="model-email-content">
+                    <div class="row">
+                        <form class="col s12">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="from_email" type="email" class="validate">
+                                    <label for="from_email">From</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="to_email" type="email" class="validate">
+                                    <label for="to_email">To</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="subject" type="text" class="validate">
+                                    <label for="subject">Subject</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <textarea id="compose" class="materialize-textarea" length="500"></textarea>
+                                    <label for="compose">Compose email</label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--end container-->
+
+</section>
+
+{% endblock%}
