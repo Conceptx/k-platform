@@ -133,7 +133,10 @@ try:
         for i in query:
             categories.append(i['Category'])
 
-        #visits
+        # Products Count
+        products = db.Products.count()
+
+        # Visits
         visits = keen.count("visits", timeframe="this_30_days")
         
         # Kudziya Page Clicks Count
@@ -142,7 +145,7 @@ try:
         # Registered User Count
         count = db.Customers.count({"Role":"user"})
         
-        return render_template('dashboard.html', credentials=credentials, categories=categories, count=count,clicks=clicks, visits=visits)
+        return render_template('dashboard.html', credentials=credentials, categories=categories, count=count,clicks=clicks, visits=visits, products=products)
 
     @app.route('/category',methods=('GET', 'POST'))
     @login_required
@@ -259,5 +262,5 @@ def pageError():
 
 if __name__ == '__main__':
 
-    app.run(host='0.0.0.0',debug=True)
+    app.run(host='0.0.0.0')
 
