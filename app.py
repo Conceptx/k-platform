@@ -116,6 +116,7 @@ try:
     @app.route('/dashboard',methods=('GET', 'POST'))
     @login_required
     def dashboard():
+        app.jinja_env.globals.update(zip=zip)
         query = db.Customers.find({"Role":"admin"}, {"Name":"1", "Password":"1", "Email":"1"})
         credentials = []
         global password
@@ -127,7 +128,7 @@ try:
 
             credentials.extend((name, email))
 
-        categories = []
+        categories, recents, percategory = ([], [], [])
         query = db.Categories.find({}, {"Category":"1"})
 
         for i in query:
@@ -144,8 +145,16 @@ try:
 
         # Registered User Count
         count = db.Customers.count({"Role":"user"})
+
+        # Recent Posts
+        query = db.Categories.find({}, {"Category":"1"})
+
+        for i in query:
+            recents.append(i['Category'])
+            percategory.append(db.Products.count({"Category":i['Category']}))
+
         
-        return render_template('dashboard.html', credentials=credentials, categories=categories, count=count,clicks=clicks, visits=visits, products=products)
+        return render_template('dashboard.html', credentials=credentials, categories=categories, count=count,clicks=clicks, visits=visits, products=products, recents=recents, percategory=percategory)
 
     @app.route('/category',methods=('GET', 'POST'))
     @login_required
@@ -259,6 +268,11 @@ def serverError(e):
 @app.route('/pageError')
 def pageError():
     return render_template("500.html")
+
+@app.route('/clear')
+def clear():
+    session.clear()
+    return redirect(url_for('login'))
 
 if __name__ == '__main__':
 

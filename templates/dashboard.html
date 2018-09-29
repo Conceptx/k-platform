@@ -116,7 +116,7 @@
             </div>
             <div class="col s12 m6 l3">
                 <div class="card-panel center">
-                    <i class="material-icons center medium">mode_edit</i>
+                    <i class="material-icons center medium">mouse</i>
                     <h5>Clicks</h5>
                     <h3 class="count">{{clicks}}</h3>
                     <div class="progress grey lighten-1">
@@ -126,7 +126,7 @@
             </div>
             <div class="col s12 m6 l3">
                 <div class="card-panel blue accent-3 white-text center">
-                    <i class="material-icons medium">mode_comment</i>
+                    <i class="material-icons medium">payment</i>
                     <h5>Total Products</h5>
                     <h3 class="count">{{products}}</h3>
                     <div class="progress grey lighten-1">
@@ -154,109 +154,20 @@
                 <div class="card-panel">
                     <div id="keen-logins-chart" style="height:fit-content; width:100%"></div>
                 </div>
-                <div class="card-panel">
-                    <div id="keen-clicks-chart" style="height:fit-content; width:100%"></div>
-                </div>
             </div>
             <div class="col s12 m6 l4">
                 <ul class="collection with-header latest-comments">
                     <li class="collection-header">
-                        <h5>Latest Comments</h5>
+                        <h5>Categories</h5>
                     </li>
-                    <li class="collection-item avatar">
-                        <img src="../static/img/avatar (2).jpg" class="circle">
-                        <span class="title">Chidi Okoye</span>
-                        <p class="truncate">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque non beatae
-                            libero minus maxime et illo animi alias omnis reprehenderit? Harum distinctio consequatur
-                            libero laboriosam fuga dolorem! Beatae fuga earum maiores, minima ratione exercitationem
-                            labore repellat nam! Nam labore reprehenderit dicta, alias, rem officiis voluptatibus quis
-                            praesentium sint quas nobis!</p>
-
-                        <a href="#" class="approve green-text">Approve</a> |
-                        <a href="#" class="deny red-text">Deny</a>
-                    </li>
-                    <li class="collection-item avatar">
-                        <img src="../static/img/avatar (2).jpg" class="circle">
-                        <span class="title">Marketing Team</span>
-                        <p class="truncate">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque non beatae
-                            libero minus maxime et illo animi alias omnis reprehenderit? Harum distinctio consequatur
-                            libero laboriosam fuga dolorem! Beatae fuga earum maiores, minima ratione exercitationem
-                            labore repellat nam! Nam labore reprehenderit dicta, alias, rem officiis voluptatibus quis
-                            praesentium sint quas nobis!</p>
-
-                        <a href="#" class="approve green-text">Approve</a> |
-                        <a href="#" class="deny red-text">Deny</a>
-                    </li>
-                    <li class="collection-item avatar">
-                        <img src="../static/img/avatar (2).jpg" class="circle">
-                        <span class="title">Theo Okoye</span>
-                        <p class="truncate">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque non beatae
-                            libero minus maxime et illo animi alias omnis reprehenderit? Harum distinctio consequatur
-                            libero laboriosam fuga dolorem! Beatae fuga earum maiores, minima ratione exercitationem
-                            labore repellat nam! Nam labore reprehenderit dicta, alias, rem officiis voluptatibus quis
-                            praesentium sint quas nobis!</p>
-
-                        <a href="#" class="approve green-text">Approve</a> |
-                        <a href="#" class="deny red-text">Deny</a>
-                    </li>
+                    {% for i, j in zip(recents,percategory) %}
+                    <li class="collection-item">{{i}} <span class="badge purple-text text-lighten-2 new blue fa-1x">{{j}}</span></li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>
     </section>
 
-    <!-- Section : Recent Posts & Task List-->
-    <section class="section section-recent sec">
-        <div class="row">
-            <div class="col s12 m6 l8">
-                <div class="card">
-                    <div class="card-content">
-                        <span class="card-title">Recent Posts</span>
-                        <table class="striped">
-                            <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Category</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Post One</td>
-                                    <td>Graphics Tools</td>
-                                    <td><a href="#" class="btn blue lighten-2">Details</a></td>
-                                </tr>
-                                <tr>
-                                    <td>Post Two</td>
-                                    <td>Hardware Tools</td>
-                                    <td><a href="#" class="btn blue lighten-2">Details</a></td>
-                                </tr>
-                                <tr>
-                                    <td>Post One</td>
-                                    <td>Software Tools</td>
-                                    <td><a href="#" class="btn blue lighten-2">Details</a></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="col s12 m6 l4">
-                <div class="card">
-                    <div class="card-content">
-                        <span class="card-title">Tasklist</span>
-                        <form id="task-form">
-                            <div class="input-field">
-                                <input type="text" id="task">
-                            </div>
-                        </form>
-
-                        <ul class="collection tasks">
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Section : Footer -->
     <footer class="section black purple-text  text-lighten-2 center sec">
@@ -430,33 +341,6 @@
             });
     </script>
 
-    <script type="text/javascript">
-        var client = new Keen({
-            projectId: "5badffe1c9e77c00012d481a",
-            readKey: "57BCB18275F5406D1ED3D85E88EF8FC5437B6C93D8725F7C3BDD1CB7EBA1A2776B0B84DC40F1D673D5A95462A8D35FD0BC736F192AA1AEF415A8035BD09B3A26AD6794FED943AC3DD0D2D6B228D4F0313FC8E93902DFA7A5CA5F8EC472FDC843"
-        });
-
-        var client = new Keen.Dataviz()
-            .el("#keen-clicks-chart")
-            .height(240)
-            .title("Clicks")
-            .type("piechart")
-            .prepare();
-
-        pie
-            .query("count", {
-                event_collection: "clicks",
-                group_by: ["element.class"],
-                timeframe: "this_5_days",
-                timezone: "Asia/Istanbul"
-            })
-            .then(function (res) {
-                chart.data(res).render();
-            })
-            .catch(function (err) {
-                chart.message(err.message);
-            });
-    </script>
 
 </body>
 
