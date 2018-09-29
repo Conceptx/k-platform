@@ -134,7 +134,7 @@ try:
             categories.append(i['Category'])
 
         # Products Count
-        products = db.Products.count()
+        products = db.Products.count({})
 
         # Visits
         visits = keen.count("visits", timeframe="this_30_days")
