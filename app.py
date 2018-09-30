@@ -88,10 +88,10 @@ try:
 
                     if dbRole == 'admin':
                         return redirect(url_for('dashboard'))
-                    elif dbRole == 'user':
-                        return redirect(url_for('kudziya'))   
                     else:
-                        error ="Invalid Credentials"
+                        return redirect(url_for('kudziya'))   
+                else:
+                    error ="Invalid Credentials"
 
         return render_template('signup.html', active=active, error=error)
 
