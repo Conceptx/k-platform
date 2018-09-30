@@ -4,7 +4,9 @@ from secure import *
 from datetime import datetime, date
 from os import urandom
 from functools import wraps
+from validate_email import validate_email
 import pymongo
+
 
 app = Flask(__name__)
 app.secret_key = urandom(3)
@@ -61,6 +63,8 @@ try:
     @app.route('/login', methods=('GET', 'POST'))
     def login():
         active='active'
+        error = '' #login error messages go here
+
         if request.method == 'POST':
             name = request.form.get('username')
             password = request.form.get('password')
@@ -93,21 +97,25 @@ try:
     def signup():
         
         if request.method == 'POST':
-            name = request.form.get('username')
             email = request.form.get('email')
-            password = (hashpw(request.form.get('password').encode('utf-8'), key)).decode('utf-8')
 
-            db.Customers.insert({"Name":name, "Email":email, "Password":password, "Role":"user"})
+            if validate_email(email) == True:
+ 
+                name = request.form.get('username')
+                
+                password = (hashpw(request.form.get('password').encode('utf-8'), key)).decode('utf-8')
 
-            keen.add_event("signups", {
-            "username": name
-            })
-            keen.add_event("visits", {
-                    "visit": str(datetime.now())
-                    })
+                db.Customers.insert({"Name":name, "Email":email, "Password":password, "Role":"user"})
 
-            return redirect(url_for('login'))
-            
+                keen.add_event("signups", {
+                "username": name
+                })
+                keen.add_event("visits", {
+                        "visit": str(datetime.now())
+                        })
+
+                return redirect(url_for('login'))
+                
         return render_template('signup.html')
 
     @app.route('/logout')

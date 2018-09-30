@@ -80,17 +80,20 @@
                                 <div class="col s12">
                                     <div class="input-field">
                                         <label for="password">Password</label>
-                                        <input type="password" name="password" placeholder="enter password" required>
+                                        <input type="password" name="password" placeholder="enter password" id="password"
+                                            required>
                                     </div>
                                 </div>
                                 <div class="col s12">
                                     <div class="input-field">
                                         <label for="cpassword">Confirm Password</label>
-                                        <input type="password" name="cpassword" placeholder="reenter password" required>
+                                        <input type="password" name="cpassword" placeholder="reenter password" id="cpassword"
+                                            required>
                                     </div>
                                 </div>
 
-                                <button type="submit" class="btn btn-medium btn-flat center blue" style="display:block;width:80%;margin:auto">
+                                <button type="submit" class="btn btn-medium btn-flat center blue" style="display:block;width:80%;margin:auto"
+                                    onclick="validate()">
                                     Create Account
                                 </button>
                             </form>
@@ -127,6 +130,18 @@
     <script>
         //Init All Elements
         M.AutoInit();
+    </script>
+    <script>
+        var validate = function () {
+            var password = document.getElementById('password')
+            var cpassword = document.getElementById('cpassword')
+
+            if (password == cpassword) {
+
+            } else {
+                //error message
+            }
+        }
     </script>
 </body>
 
