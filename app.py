@@ -204,15 +204,24 @@ try:
     @app.route('/users',methods=('GET', 'POST'))
     def users():
         query = db.Customers.find({"Role":"user"}, {"Name":"1", "Email":"1"})
+        users = []
+
+        for i in query:
+            name = i['Name']
+            email = i['Email']
+
+            users.append((name, email))
+
+        query = db.Customers.find({"Role":"user"}, {"Name":"1", "Email":"1"})
         credentials = []
 
         for i in query:
             name = i['Name']
             email = i['Email']
 
-            credentials.append((name, email))
+            credentials.extend((name, email))
 
-        return render_template('users.html', credentials=credentials)
+        return render_template('users.html', users=users, credentials=credentials)
 
     @app.route('/invoices')
     def invoices():
