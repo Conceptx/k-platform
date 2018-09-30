@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Kudziya - Dashboard</title>
+    <title>{% block title %} Kudziya - Dashboard {% endblock %}</title>
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="../static/css/iconfont/material-icons.css">
@@ -64,7 +64,6 @@
                     </li>
                     <li><a href="{{url_for('posts')}}">Posts</a></li>
                     <li><a href="{{url_for('category')}}">Categories</a></li>
-                    <li><a href="#">Comments</a></li>
                     <li><a href="{{url_for('users')}}">Users</a></li>
                 </ul>
 
@@ -88,7 +87,6 @@
                     </li>
                     <li><a href="{{url_for('posts')}}">Posts</a></li>
                     <li><a href="{{url_for('category')}}">Categories</a></li>
-                    <li><a href="#">Comments</a></li>
                     <li><a href="{{url_for('users')}}">Users</a></li>
                     <li><a>
                             <div class="divider"></div>
@@ -104,7 +102,7 @@
             </div>
         </div>
     </nav>
-
+    {% block content %}
     <!-- Section : Stats -->
     <section class="section section-stats center sec">
         <div class="row">
@@ -293,7 +291,7 @@
         </div>
     </div>
 
-
+    {% endblock %}
     <!-- Section : Preloader -->
     <header class="main-header preloader">
         <div class="primary-overlay">

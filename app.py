@@ -167,18 +167,57 @@ try:
 
         for i in query:
             categories.append((i['Category'], i['Date Created']))
+
+        query = db.Customers.find({"Role":"admin"}, {"Name":"1", "Password":"1", "Email":"1"})
+        credentials = []
+
+        for i in query:
+            name = i['Name']
+            email = i['Email']
+
+            credentials.extend((name, email))
         
-        return render_template('categories.html', categories=categories)
+        return render_template('categories.html', categories=categories, credentials=credentials)
 
     @app.route('/posts',methods=('GET', 'POST'))
     @login_required
     def posts():
-        return render_template('posts.html')
+        query = db.Customers.find({"Role":"admin"}, {"Name":"1", "Password":"1", "Email":"1"})
+        credentials = []
+
+        for i in query:
+            name = i['Name']
+            email = i['Email']
+
+            credentials.extend((name, email))
+
+        query = db.Products.find({}, {"Ref#":"1", "Name":"1", "Category":"1", "Price":"1", "Status":"1"})
+        posts = []
+
+        for i in query:
+            ref = i['Ref#']
+            title = i['Name']
+            category = i['Category']
+            price = i['Price']
+            status = i['Status']
+
+            posts.append((ref, title, category, price, status))
+
+        return render_template('posts.html', posts=posts, credentials=credentials)
 
     @app.route('/users',methods=('GET', 'POST'))
     @login_required
     def users():
-        return render_template('users.html')
+        query = db.Customers.find({"Role":"user"}, {"Name":"1", "Email":"1"})
+        credentials = []
+
+        for i in query:
+            name = i['Name']
+            email = i['Email']
+
+            credentials.append((name, email))
+
+        return render_template('users.html', credentials=credentials)
 
     @app.route('/invoices')
     @login_required
