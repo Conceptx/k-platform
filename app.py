@@ -160,7 +160,6 @@ try:
         return render_template('dashboard.html', credentials=credentials, categories=categories, count=count,clicks=clicks, visits=visits, products=products, recents=recents, percategory=percategory)
 
     @app.route('/category',methods=('GET', 'POST'))
-    @login_required
     def category():
         categories = []
         query = db.Categories.find({}, {"Category":"1", "Date Created":"1"})
@@ -180,7 +179,6 @@ try:
         return render_template('categories.html', categories=categories, credentials=credentials)
 
     @app.route('/posts',methods=('GET', 'POST'))
-    @login_required
     def posts():
         query = db.Customers.find({"Role":"admin"}, {"Name":"1", "Password":"1", "Email":"1"})
         credentials = []
@@ -206,7 +204,6 @@ try:
         return render_template('posts.html', posts=posts, credentials=credentials)
 
     @app.route('/users',methods=('GET', 'POST'))
-    @login_required
     def users():
         query = db.Customers.find({"Role":"user"}, {"Name":"1", "Email":"1"})
         credentials = []
@@ -220,7 +217,6 @@ try:
         return render_template('users.html', credentials=credentials)
 
     @app.route('/invoices')
-    @login_required
     def invoices():
         if 'username' in session:
             username = session['username']
@@ -228,7 +224,6 @@ try:
         return render_template('invoice.html', username=username)
 
     @app.route('/mailbox')
-    @login_required
     def mailbox():
         if 'username' in session:
             username = session['username']
@@ -237,7 +232,6 @@ try:
 
     #Add Product
     @app.route('/add/products', methods=('GET', 'POST'))
-    @login_required
     def addProduct():
 
         if request.method == 'POST':
@@ -262,7 +256,6 @@ try:
 
     #Add category
     @app.route('/add/category', methods=('GET', 'POST'))
-    @login_required
     def addCategory():
 
         if request.method == 'POST':
@@ -273,7 +266,6 @@ try:
             
     # Edit account settings
     @app.route('/edit/admin/account', methods=('GET', 'POST'))
-    @login_required
     def editAdminAccount():
 
         if request.method == 'POST':
