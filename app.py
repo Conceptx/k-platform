@@ -35,7 +35,6 @@ try:
         return render_template('landing.html')
 
     @app.route('/kudziya/home',methods=('GET', 'POST'))
-    @login_required
     def kudziya():
         keen.add_event("visits", {
                     "visit": str(datetime.now())
@@ -117,7 +116,6 @@ try:
         return redirect(url_for('login'))
 
     @app.route('/dashboard',methods=('GET', 'POST'))
-    @login_required
     def dashboard():
         app.jinja_env.globals.update(zip=zip)
         query = db.Customers.find({"Role":"admin"}, {"Name":"1", "Password":"1", "Email":"1"})
