@@ -92,6 +92,8 @@
                                     </div>
                                 </div>
 
+                                <h6 class="red-text" id="error"></h6>
+
                                 <button type="submit" class="btn btn-medium btn-flat center blue" style="display:block;width:80%;margin:auto"
                                     onclick="validate()">
                                     Create Account
@@ -137,9 +139,9 @@
             var cpassword = document.getElementById('cpassword')
 
             if (password == cpassword) {
-
+                window.location.href = "{{url_for('login')}}"
             } else {
-                //error message
+                document.getElementById('error').textContent = "Passwords do not match";
             }
         }
     </script>
