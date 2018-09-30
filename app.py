@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, redirect, session
+from flask import Flask, render_template, url_for, request, redirect, session, flash
 from bcrypt import hashpw
 from secure import *
 from datetime import datetime, date
@@ -63,7 +63,7 @@ try:
     @app.route('/login', methods=('GET', 'POST'))
     def login():
         active='active'
-        error = '' #login error messages go here
+        error=''
 
         if request.method == 'POST':
             name = request.form.get('username')
@@ -88,10 +88,12 @@ try:
 
                     if dbRole == 'admin':
                         return redirect(url_for('dashboard'))
+                    elif dbRole == 'user':
+                        return redirect(url_for('kudziya'))   
                     else:
-                        return redirect(url_for('kudziya'))    
+                        error ="Invalid Credentials"
 
-        return render_template('signup.html', active=active)
+        return render_template('signup.html', active=active, error=error)
 
     @app.route('/signup', methods=('GET', 'POST'))
     def signup():

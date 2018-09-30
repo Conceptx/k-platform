@@ -64,7 +64,7 @@
                             </div>
                         </div>
                         <div id="signup">
-                            <form action="{{url_for('signup')}}" method="post">
+                            <form method="post">
                                 <div class="col s12">
                                     <div class="input-field">
                                         <label for="username">Username</label>
@@ -84,6 +84,7 @@
                                             required>
                                     </div>
                                 </div>
+                                <h6 class="red-text" id="error"></h6>
                                 <div class="col s12">
                                     <div class="input-field">
                                         <label for="cpassword">Confirm Password</label>
@@ -91,8 +92,6 @@
                                             required>
                                     </div>
                                 </div>
-
-                                <h6 class="red-text" id="error"></h6>
 
                                 <button type="submit" class="btn btn-medium btn-flat center blue" style="display:block;width:80%;margin:auto"
                                     onclick="validate()">
