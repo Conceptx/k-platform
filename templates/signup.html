@@ -116,6 +116,10 @@
                                 <button type="submit" class="btn btn-medium btn-flat blue" style="display:block;width:80%;margin:auto">
                                     Sign In
                                 </button>
+
+                                {% if error %}
+                                <h6><strong>{{ error }}</strong></h6>
+                                {% endif %}
                             </form>
                         </div>
                         <div class="col s12 m8 l4"></div>

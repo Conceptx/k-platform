@@ -188,7 +188,7 @@ try:
 
     @app.route('/posts',methods=('GET', 'POST'))
     def posts():
-        query = db.Customers.find({"Role":"admin"}, {"Name":"1", "Password":"1", "Email":"1"})
+        query = db.Customers.find({"Role":"admin"}, {"Name":"1", "Email":"1"})
         credentials = []
 
         for i in query:
